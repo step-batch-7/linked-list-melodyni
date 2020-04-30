@@ -1,6 +1,9 @@
 #ifndef __LIST_H
 #define __LIST_H
 
+#include<stdio.h>
+#include<stdlib.h>
+
 typedef enum
 {
   Failure,
