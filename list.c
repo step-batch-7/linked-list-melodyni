@@ -41,3 +41,47 @@ Status add_to_start(List_ptr list, int value){
   list->count++;
   return Success;
 }
+
+Status insert_at(List_ptr list, int value, int position){
+  if(position< 0){
+    return Failure;
+  }
+  if(position == 0){
+    return add_to_start(list,value);
+  }
+  Node_ptr new_node = create_node(value);
+  Node_ptr p_walk = list->head;
+  while(--position > 0){
+    if(p_walk == NULL){
+      return Failure;
+    }
+    p_walk = p_walk->next;
+  }
+  new_node->next = p_walk->next;
+  p_walk->next = new_node;
+  return Success;
+}
+
+int search(List_ptr list,int element){
+  Node_ptr p_walk = list->head;
+  int index = 0;
+  while(p_walk != NULL){
+    if(p_walk->value == element){
+      return index;
+    }
+    index++;
+    p_walk = p_walk->next;
+  }
+  return -1;
+}
+
+Status add_unique(List_ptr list, int value){
+  int status = search(list,value);
+  if(status == -1){
+    return add_to_end(list,value);
+  }
+  return Success;
+}
+
+
+
