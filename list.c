@@ -15,8 +15,8 @@ List_ptr create_list(void){
   return list;
 }
 
-Status add_to_end(List *list, int value){
-  Node *new_node = create_node(value);
+Status add_to_end(List_ptr list, int value){
+  Node_ptr new_node = create_node(value);
   if(list->head == NULL){
     list->head = new_node;
   }
@@ -24,6 +24,20 @@ Status add_to_end(List *list, int value){
     list->last->next = new_node;
   }
   list->last = new_node;
+  list->count++;
+  return Success;
+}
+
+Status add_to_start(List_ptr list, int value){
+  Node_ptr new_node = create_node(value);
+  if(list->head == NULL){
+    list->head= new_node;
+    list->last = new_node;
+  }
+  else{
+    new_node->next = list->head;
+    list->head = new_node;
+  }
   list->count++;
   return Success;
 }
