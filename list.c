@@ -1,6 +1,6 @@
 #include "list.h"
 
-Node_ptr create_node(value){
+Node_ptr create_node(int value){
   Node *node = (Node *)malloc(sizeof(Node));
   node->value = value;
   node->next = NULL;
@@ -129,4 +129,3 @@ Status remove_from_end(List_ptr list){
   list->count--;
   return Success;
 }
-
