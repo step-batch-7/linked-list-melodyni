@@ -152,3 +152,8 @@ Status remove_at(List_ptr list, int position){
   list->count--;  
   return Success;
 }
+
+Status remove_first_occurrence(List_ptr list, int value){
+  int position = search(list, value);
+  return remove_at(list,position);
+}

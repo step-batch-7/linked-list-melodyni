@@ -10,6 +10,7 @@ void show_menu(){
   printf("(e) remove a number from the beginning of the list\n");
   printf("(f) remove a number from the end of the list\n");
   printf("(g) remove a number from a given position in the list\n");
+  printf("(h) remove first occurrence of a number\n");
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n");
   printf("\nPlease enter the alphabet of the operation you would like to perform  ");
@@ -71,6 +72,12 @@ int main(void)
         remove_at(list,position);
       break;
 
+      case 'h':
+        printf("Enter a value: \n");
+        scanf("%d",&value);
+        remove_first_occurrence(list,value);
+      break;
+      
       case 'l':
         display(list);
 
