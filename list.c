@@ -131,7 +131,7 @@ Status remove_from_end(List_ptr list){
 }
 
 Status remove_at(List_ptr list, int position){
-  if(position < 0){
+  if(position < 0 || position >= list->count){
     return Failure;
   }
   if(position == 0){
@@ -148,6 +148,6 @@ Status remove_at(List_ptr list, int position){
   Node_ptr node_to_remove = p_walk->next;
   p_walk->next = p_walk->next->next;
   free(node_to_remove);
-  list->count--;
+  list->count--;  
   return Success;
 }
