@@ -117,10 +117,10 @@ Status remove_from_end(List_ptr list){
     while(sec_last_value > 0){
       p_walk = p_walk->next;
       sec_last_value--;
-      free(p_walk->next);
-      p_walk->next = NULL;
-      list->last = p_walk;
     }
+    list->last = p_walk;
+    free(p_walk->next);
+    p_walk->next = NULL;
   }else{
     free(list->head);
     list->head = NULL;
