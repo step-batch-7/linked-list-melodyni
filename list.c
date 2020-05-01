@@ -49,11 +49,12 @@ Status insert_at(List_ptr list, int value, int position){
   if(position == 0){
     return add_to_start(list,value);
   }
+  if(position == list->count){
+    return add_to_end(list,value);
+  }
   Node_ptr new_node = create_node(value);
   Node_ptr p_walk = list->head;
-  if(position == list->count){
-    list->last = new_node;
-  }
+
   while(position > 1){
     if(p_walk == NULL){
       return Failure;
