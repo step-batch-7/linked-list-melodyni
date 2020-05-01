@@ -13,6 +13,7 @@ void show_menu(){
   printf("(h) remove first occurrence of a number\n");
   printf("(i) remove all occurrences of a number\n");
   printf("(j) clear the whole list\n");
+  printf("(k) check if a number exists in the list\n");
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n");
   printf("\nPlease enter the alphabet of the operation you would like to perform  ");
@@ -22,8 +23,8 @@ int main(void)
 {
   List_ptr list = create_list();
   char operation;
-  int value, position;
-
+  int value, position, index;
+  char status[8];
   while(operation != 'm'){
     show_menu();
     scanf("%c",&operation);
@@ -77,12 +78,14 @@ int main(void)
       case 'h':
         printf("Enter a value: \n");
         scanf("%d",&value);
+        fflush(stdin);
         remove_first_occurrence(list,value);
       break;
 
       case 'i':
         printf("Enter a value: \n");
         scanf("%d",&value);
+        fflush(stdin);
         remove_all_occurrences(list,value);
       break;
       
@@ -91,7 +94,11 @@ int main(void)
       break;
 
       case 'k':
-        clear_list(list);
+        printf("Enter a value: \n");
+        scanf("%d",&value);
+        fflush(stdin);
+        index = search(list,value);
+        printf("%s", (index == -1)? "number does not exist": "number exists");
       break;
       
       case 'l':
