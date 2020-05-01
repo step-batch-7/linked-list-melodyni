@@ -12,6 +12,7 @@ void show_menu(){
   printf("(g) remove a number from a given position in the list\n");
   printf("(h) remove first occurrence of a number\n");
   printf("(i) remove all occurrences of a number\n");
+  printf("(j) clear the whole list\n");
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n");
   printf("\nPlease enter the alphabet of the operation you would like to perform  ");
@@ -83,6 +84,14 @@ int main(void)
         printf("Enter a value: \n");
         scanf("%d",&value);
         remove_all_occurrences(list,value);
+      break;
+      
+      case 'j':
+        clear_list(list);
+      break;
+
+      case 'k':
+        clear_list(list);
       break;
       
       case 'l':
