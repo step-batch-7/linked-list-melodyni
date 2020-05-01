@@ -8,6 +8,8 @@ void show_menu(){
   printf("(c) insert a number at a given position in the list\n");
   printf("(d) add a unique item on the list at the end(if it already exists, do not insert)\n");
   printf("(e) remove a number from the beginning of the list\n");
+  printf("(f) remove a number from the end of the list\n");
+  printf("(g) remove a number from a given position in the list\n");
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n");
   printf("\nPlease enter the alphabet of the operation you would like to perform  ");
@@ -60,6 +62,13 @@ int main(void)
 
       case 'f':
         remove_from_end(list);
+      break;
+
+      case 'g':
+        printf("Enter a position: \n");
+        scanf("%d",&position);
+        fflush(stdin);
+        remove_at(list,position);
       break;
 
       case 'l':
