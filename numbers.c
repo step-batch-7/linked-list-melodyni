@@ -1,7 +1,7 @@
 #include "list.h"
 
 void show_menu(){
-  printf("\n\nMain Menu\n");
+  printf("\nMain Menu\n");
   printf("---------\n");
   printf("(a) add a number to the end of the list\n");
   printf("(b) add a number to the start of the list\n");
@@ -16,15 +16,25 @@ void show_menu(){
   printf("(k) check if a number exists in the list\n");
   printf("(l) display the list of numbers\n");
   printf("(m) exit\n");
-  printf("\nPlease enter the alphabet of the operation you would like to perform  ");
+  printf("---------------------------------------------------------------------\n");
+  printf("Please enter the alphabet of the operation you would like to perform  ");
 }
+
+void display_status(status){
+  if(status == 1){
+    printf("Success");
+  }else{
+    printf("Failure");
+  }
+}
+
 
 int main(void)
 {
   List_ptr list = create_list();
   char operation;
   int value, position, index;
-  char status[8];
+  Status status;
   while(operation != 'm'){
     show_menu();
     scanf("%c",&operation);
@@ -32,81 +42,86 @@ int main(void)
     switch (operation)
     {
       case 'a':
-        
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
-        add_to_end(list,value);
+        status = add_to_end(list,value);
+        display_status(status);
         break;
 
       case 'b':
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
-        add_to_start(list,value);
+        status = add_to_start(list,value);
+        display_status(status);
         break;
 
       case 'c':
         printf("Enter a value and position: \n");
         scanf("%d %d",&value,&position);
-        fflush(stdin);
-        insert_at(list,value,position);
+        status = insert_at(list,value,position);
+        display_status(status);
         break;
 
       case 'd':
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
-        add_unique(list,value);
+        status = add_unique(list,value);
+        display_status(status);
         break;
 
       case 'e':
-        remove_from_start(list);
+        status = remove_from_start(list);
+        display_status(status);
         break;
 
       case 'f':
-        remove_from_end(list);
-      break;
+        status = remove_from_end(list);
+        display_status(status);
+        break;
 
       case 'g':
         printf("Enter a position: \n");
         scanf("%d",&position);
-        fflush(stdin);
-        remove_at(list,position);
-      break;
+        status = remove_at(list,position);
+        display_status(status);
+        break;
 
       case 'h':
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
-        remove_first_occurrence(list,value);
-      break;
+        status = remove_first_occurrence(list,value);
+        display_status(status);
+        break;
 
       case 'i':
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
-        remove_all_occurrences(list,value);
-      break;
+        status = remove_all_occurrences(list,value);
+        display_status(status);
+        break;
       
       case 'j':
-        clear_list(list);
-      break;
+        status = clear_list(list);
+        display_status(status);
+        break;
 
       case 'k':
         printf("Enter a value: \n");
         scanf("%d",&value);
-        fflush(stdin);
         index = search(list,value);
         printf("%s", (index == -1)? "number does not exist": "number exists");
-      break;
+        break;
       
       case 'l':
         display(list);
+        break;
 
       default:
         break;
-      }
+    }
+    printf("\n----------------------------------------------------------\n");
+    fflush(stdin);
   }
+
   return 0;
 }
