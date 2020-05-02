@@ -17,12 +17,11 @@ List_ptr create_list(void){
 
 Status add_to_end(List_ptr list, int value){
   Node_ptr new_node = create_node(value);
-  if(list->head == NULL){
-    list->head = new_node;
+  Node_ptr *node_to_set = &list->head;
+  if(list->head != NULL){
+    node_to_set = &list->last->next;
   }
-  else{
-    list->last->next = new_node;
-  }
+  (*node_to_set) = new_node;
   list->last = new_node;
   list->count++;
   return Success;
