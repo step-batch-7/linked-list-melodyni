@@ -112,21 +112,16 @@ Status remove_from_end(List_ptr list){
   if(list->head == NULL){
     return Failure;
   }
-  if(list->count > 1){
-    int sec_last_value = list->count-2;
-    Node_ptr p_walk = list->head;
-    while(sec_last_value > 0){
-      p_walk = p_walk->next;
-      sec_last_value--;
-    }
-    list->last = p_walk;
-    free(p_walk->next);
-    p_walk->next = NULL;
-  }else{
-    free(list->head);
-    list->head = NULL;
-    list->last = NULL;
+  if(list->count == 1){
+    return remove_from_start(list);
   }
+  Node_ptr p_walk = list->head;
+  while(p_walk->next->next != NULL){
+    p_walk = p_walk->next;
+  }
+  list->last = p_walk;
+  free(p_walk->next);
+  p_walk->next = NULL;
   list->count--;
   return Success;
 }
