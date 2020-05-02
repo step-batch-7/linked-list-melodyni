@@ -41,6 +41,7 @@ Status add_to_start(List_ptr list, int value){
   return Success;
 }
 
+
 Status insert_at(List_ptr list, int value, int position){
   if(position < 0){
     return Failure;
@@ -167,24 +168,11 @@ Status remove_all_occurrences(List_ptr list, int value){
 }
 
 Status clear_list(List_ptr list){
-  if(list->head == NULL){
-    return Success;
+  Status status = Success;
+  while(list->head != NULL){
+    status =  remove_from_end(list);
   }
-  if(list->count == 1){
-    free(list->head);
-    list->head = NULL;
-    list->last = NULL;
-    list->count = 0;
-    return Success;
-  }
-  Node_ptr p_walk = list->head;
-  while(p_walk->next->next != NULL){
-    p_walk = p_walk->next;
-  }
-  free(p_walk->next);
-  p_walk->next = NULL;
-  list->count--;
-  return clear_list(list);
+  return status;
 }
 
 void destroy_list(List_ptr list){
