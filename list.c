@@ -86,7 +86,7 @@ Status add_unique(List_ptr list, int value){
   if(status == -1){
     return add_to_end(list,value);
   }
-  return Success;
+  return Failure;
 }
 
 void display(List_ptr list){
