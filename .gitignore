@@ -1,1 +1,4 @@
 *.o
+outputs/
+test_results/
+.vscode/
