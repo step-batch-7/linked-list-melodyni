@@ -154,7 +154,7 @@ Status remove_first_occurrence(List_ptr list, int value){
 }
 
 Status remove_all_occurrences(List_ptr list, int value){
-  int position;
+  int position = search(list, value);
   while(position != -1){
     remove_at(list,position);
     position = search(list, value);
