@@ -155,11 +155,12 @@ Status remove_first_occurrence(List_ptr list, int value){
 
 Status remove_all_occurrences(List_ptr list, int value){
   int position = search(list, value);
+  Status status = Failure;
   while(position != -1){
-    remove_at(list,position);
+    status = remove_at(list,position);
     position = search(list, value);
   }
-  return Failure;
+  return status;
 }
 
 Status clear_list(List_ptr list){
