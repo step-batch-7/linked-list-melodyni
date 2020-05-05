@@ -159,7 +159,7 @@ Status remove_all_occurrences(List_ptr list, int value){
     remove_at(list,position);
     position = search(list, value);
   }
-  return Success;
+  return Failure;
 }
 
 Status clear_list(List_ptr list){
