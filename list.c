@@ -168,6 +168,7 @@ Status clear_list(List_ptr list){
   while(list->head != NULL){
     status =  remove_from_end(list);
   }
+  list->last = NULL;
   return status;
 }
 
@@ -177,6 +178,9 @@ void destroy_list(List_ptr list){
 }
 
 int is_num_on_position(List_ptr list, int num , int position){
+   if(position < 0 || position >= list->count){
+    return 0;
+  }
   Node_ptr p_walk = list->head;
   while(position > 0){
     if(p_walk == NULL){
