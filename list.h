@@ -48,4 +48,6 @@ Status clear_list(List_ptr); // Removes all elements in the list
 
 void destroy_list(List_ptr); // Frees the elements and the list structure from memory
 
+int is_num_on_position(List_ptr list, int num , int position);
+
 #endif

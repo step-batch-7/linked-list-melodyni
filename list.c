@@ -175,3 +175,20 @@ void destroy_list(List_ptr list){
   clear_list(list);
   free(list);
 }
+
+int is_num_on_position(List_ptr list, int num , int position){
+  Node_ptr p_walk = list->head;
+  while(position > 0){
+    if(p_walk == NULL){
+      return 0;
+    }
+    p_walk = p_walk->next;
+    position--;
+  }
+  if(p_walk->value == num){
+    return 1;
+  }else{
+    return 0;
+  }
+}
+
